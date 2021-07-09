@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<form method="POST" action="/">
+      {% csrf_token %}
+      {{form.task_name}}
+      <input type="submit" name="Create task"/>
+</form>
+  {% for task in tasks %}
+      <div>
+          <p>{{task}}</p>
+          <a href="{% url 'update-task' task.id %}">Update task</a>
+          <a href="{% url 'delete' task.id %}">Delete task</a>
+      </div>
+  {% endfor %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Hello Word, Welcome to the !</title>
-</head>
-
-<body>
-    <div id="box2" class="tbox">
-        <div id="form_box">
-            <form id="subscribe_form" action="subscribe" method="post">
-                <input class="tbox" id="subscribe_email" type="text" name="email" value="email address" />
-                <input class="tbox" id="subscribe_submit" type="submit" value="Subscribe" />
-            </form>
-        </div>
-    </div>
-</body>
 </html>
